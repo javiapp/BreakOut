@@ -5,8 +5,17 @@ game.PlayScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
-
-		// add our HUD to the game world
+                
+                // This Loads the level
+                me.levelDirector.loadLevel("javimap1");
+                
+            
+            
+                var ball = new game.BallEntity(50,50,{});    
+                me.game.add(ball,4); // the 4 is what layer we want the ballto appaear in                  
+               
+            
+            // add our HUD to the game world
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);
 	},

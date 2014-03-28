@@ -39,22 +39,30 @@ game.BallEntity=me.ObjectEntity.extend({
         settings.spriteheight = "16";
         this.parent(x,y,settings);
         
-        this.setVelocity(10,10);
+        this.setVelocity(2,2);
         this.vel.x += this.accel.x * me.timer.tick;
         this.vel.y += this.accel.y * me.timer.tick;
         
         this.previousVelocity = this.vel.clone();// record what the veolicity is before hit the wall
        
+        
         this.collidable = true;
     },
  
     update: function () {
         var collision =  this.collide();// stores object that the ball has collided with; whatever the ball collides with is stored in the variable
-        // what do we do if it has a collisoin
+                 // what do we do if it has a collisoin
         if (collision){ // check if collsion
           if(collision.type === "paddle"){
               this.vel.y *= -1;
+              me.audio.play("paddle-sfx");
           }//then check what type of collsion that is   
+         if(collision.type === "brick"){
+              this.vel.y *= -1;
+              game.data.score += 100;
+              me.audio.play("paddle-sfx");
+          
+            }
         }
         
         collision = this.updateMovement();  // use to find what the velocity is  [what the velocity is after updating movement IS what's stored into collsion]
@@ -81,7 +89,12 @@ game.BrickEntity=me.ObjectEntity.extend({
         settings.spritewidth = "32";
         settings.spriteheight = "16";
         this.parent(x,y,settings);
+        
+        this.type = "brick";
+        this.collidable = true;
+         
     },
-  update:function () {}
+      update:function () {}   
+     
     });
     

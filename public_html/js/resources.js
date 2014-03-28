@@ -19,7 +19,7 @@ game.resources = [
 	 * {name: "example01", type: "tmx", src: "data/map/example01.tmx"},
 	 * {name: "example01", type: "tmx", src: "data/map/example01.json"},
  	 */
-        {name: "javimap1", type: "tmx", src:"data/map/javimap1.tmx"}
+        {name: "javimap1", type: "tmx", src:"data/map/javimap1.tmx"},
 	/* Background music. 
 	 * @example
 	 * {name: "example_bgm", type: "audio", src: "data/bgm/", channel : 1},
@@ -29,4 +29,5 @@ game.resources = [
 	 * @example
 	 * {name: "example_sfx", type: "audio", src: "data/sfx/", channel : 2}
 	 */
+        {name:"paddle-sfx", type: "audio", src: "data/sfx/",channel: 1}
 ];

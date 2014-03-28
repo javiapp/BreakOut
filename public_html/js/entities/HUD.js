@@ -44,6 +44,8 @@ game.HUD.ScoreItem = me.Renderable.extend({
 		// (size does not matter here)
 		this.parent(new me.Vector2d(x, y), 10, 10); 
 		
+                this.font = new me.Font("courier New", 16 ,"white"); // choose the font you want for the HUD
+                
 		// local copy of the global score
 		this.score = -1;
 
@@ -68,7 +70,7 @@ game.HUD.ScoreItem = me.Renderable.extend({
 	 * draw the score
 	 */
 	draw : function (context) {
-		// draw it baby !
+		this.font.draw(context, "Score: " + this.score, 0,0);
 	}
 
 });
